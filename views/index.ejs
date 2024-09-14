@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome to admin panel</h1>
+    <form action="/addusers" method="post">
+        <div>
+            <input type="text" placeholder="enter name" name="name">
+        </div>
+        <div>
+            <input type="number" placeholder="enter  age" age="age">
+        </div>
+        <button>submit</button>
+    </form>
+    <div>
+        <% data.map((item)=>{%>
+             <h1><%=item.name%></h1>
+             <h1><%=item.age%></h1>
+        <%})%>
+    </div>
+</body>
+</html>

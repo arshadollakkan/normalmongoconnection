@@ -1,0 +1,66 @@
+step-1
+-----------------
+commone prop vann mongosh acess akkanam
+mongod -- version
+mongosh
+shesham mongoose connectil localhost matti itil ulla number kodukkugha
+//creating of schema structur for capturing the data
+let result=new mongoose.Schema({
+    name:{type:String},
+    age:{type:Number},
+})
+//creating of model then it connect the structurre(schemma) to collections if presenet
+// ith data backendil ninn add akki databasilekk povann
+let Users=mongoose.model("users",result);//users "s" idan marakkaruth
+app.get('/addusers',(req,res)=>{
+    let data=new Users({   //adding data to mongodb using backend
+        name:"jalal",
+        age:23
+    })
+    data.save();
+    res.json("added")
+
+})
+app.listen(3000,()=>{
+    console.log("server started");
+})
+------------------------------------------------
+//databasilulla data kanan
+const express=require('express');
+const app=express();
+const mongoose=require('mongoose');
+//step-1
+//connecting to database using mongoose
+mongoose.connect("mongodb://127.0.0.1:27017/alim").then(()=>{
+    console.log("connected");
+}).catch((err)=>{
+    console.log(err);          
+})
+//creating of schema structur for capturing the data
+let result=new mongoose.Schema({
+    name:{type:String},
+    age:{type:Number},
+})
+//creating of model then it connect the structurre(schemma) to collections if presenet
+
+let Users=mongoose.model("users",result);//users "s" idan marakkaruth
+app.get('/addusers',(req,res)=>{
+    let data=new Users({   //adding data to mongodb using backend
+        name:"jalal",
+        age:23
+    })
+    data.save();
+    res.json("added")
+
+})
+app.get('/',(req,res)=>{
+    Users.find({}).then((data)=>{
+        res.json(data)
+    }).catch((err)=>{
+        res.json(err)
+    })
+})
+app.listen(3000,()=>{
+    console.log("server started");
+})
+/////////////////////////////////////////////////////
